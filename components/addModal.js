@@ -13,9 +13,10 @@ export default class AddModalStudy extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            newFoodName: '',
+            newFoodDes: ''
         }
-        this.myModal = React.createRef();
         this.showModal = this.showModal.bind(this);
     }
 
@@ -29,6 +30,19 @@ export default class AddModalStudy extends Component {
         this.setState({
             isOpen: false
         })
+    }
+
+    onClickAdd() {
+        if (this.state.newFoodName.length == 0 || this.state.newFoodDes.length == 0) {
+            return;
+        }
+        const newFood = {
+            id: '098',
+            title: this.state.newFoodName,
+            description: this.state.newFoodDes
+        }
+        this.props.flatListData._addNewFood(newFood);
+        // this.props.flatListData.refreshFlatList('098');
     }
     render() {
         return (
@@ -46,7 +60,7 @@ export default class AddModalStudy extends Component {
                 position='center'
                 backdrop={true}
                 onClosed={() => {
-                    alert('Modal close');
+                    // alert('Modal close');
                 }}
             >
                 <Text
@@ -66,7 +80,40 @@ export default class AddModalStudy extends Component {
                         marginTop: 20
                     }}
                     placeholder="Enter new food's name"
+                    defaultValue={this.state.newFoodName}
+                    onChangeText={(text) => {
+                        this.setState({ newFoodName: text })
+                    }}
                 />
+                <TextInput
+                    style={{
+                        height: 40,
+                        width: screen.width - 150,
+                        borderBottomColor: 'gray',
+                        borderBottomWidth: 1,
+                        paddingLeft: 10,
+                        marginTop: 20
+                    }}
+                    placeholder="Enter new food's description"
+                    value={this.state.newFoodDes}
+                    onChangeText={(text) => {
+                        this.setState({ newFoodDes: text })
+                    }}
+                />
+                <Button
+                    style={{ fontSize: 18, color: 'white' }}
+                    containerStyle={{
+                        marginTop: 30,
+                        marginHorizontal: 40,
+                        paddingVertical: 10,
+                        paddingHorizontal: 40,
+                        borderRadius: 10,
+                        backgroundColor: 'orange'
+                    }}
+                    onPress={() => this.onClickAdd()}
+                >
+                    Add
+                </Button>
             </Modal>
         )
     }

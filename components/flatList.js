@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import {
-    Alert, Image,
+    Alert, Image, TextInput, Dimensions,
     FlatList, StyleSheet, Text, View, TouchableHighlight, Platform, TouchableHighlightBase
 } from 'react-native';
 import flatListData from '../data/flatListData';
 import SwipeOut from 'react-native-swipeout';
 import AddModalStudy from './addModal';
 
+var screen = Dimensions.get('window');
 class FlatListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeRowId: null
+            activeRowId: null,
+            newFoodName: ''
         }
     }
 
@@ -98,6 +100,17 @@ export default class FlatListStudy extends Component {
         this.addModal.current.showModal();
     }
 
+    _addNewFood(newFood) {
+        if (!newFood) {
+            alert(newFood);
+            return;
+        }
+
+        flatListData.push(newFood);
+        alert('Add new food successful!')
+        this.addModal.current.closeModal();
+    }
+
     render() {
         const renderItem = ({ item }) => (
             <FlatListItem item={item} parentFlatList={this}></FlatListItem>
@@ -127,6 +140,7 @@ export default class FlatListStudy extends Component {
                             source={require('../assets/images/add.png')} />
                     </TouchableHighlight>
                 </View>
+
                 <FlatList
                     data={flatListData}
                     renderItem={renderItem}
@@ -135,6 +149,7 @@ export default class FlatListStudy extends Component {
                 </FlatList>
                 <AddModalStudy
                     ref={this.addModal}
+                    flatListData={this}
                 ></AddModalStudy>
             </ View>
         )
