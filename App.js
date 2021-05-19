@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, ViewPagerAndroid } from 'react-native';
 import Basic from './components/basic';
 import ScrollViewStudy from './components/scrollView';
 import FlatListStudy from './components/flatList';
+import LifeCycleComponent from './components/lifeCycle';
+import CommentList from './components/commentList';
 
 export default function App() {
   return (
@@ -16,14 +18,11 @@ export default function App() {
       // justifyContent: 'space-between',
       // alignItems: 'stretch'
     }}>
-      {/* <View> */}
       {/* <Basic></Basic> */}
       {/* <ScrollViewStudy></ScrollViewStudy> */}
       <FlatListStudy></FlatListStudy>
-      {/* </View> */}
-      {/* <Text style={{ width: 50, height: 50, backgroundColor: 'red' }}></Text>
-      <Text style={{ width: 50, height: 50, backgroundColor: 'blue' }}></Text>
-      <Text style={{ width: 50, height: 50, backgroundColor: 'green' }}></Text> */}
+      {/* <LifeCycleComponent></LifeCycleComponent> */}
+      {/* <CommentList></CommentList> */}
     </View>
   );
 }

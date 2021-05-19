@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {
-    Alert, Image, TextInput, Dimensions,
+    Alert, Image, TextInput, Dimensions, RefreshControl,
     FlatList, StyleSheet, Text, View, TouchableHighlight, Platform, TouchableHighlightBase
 } from 'react-native';
 import flatListData from '../data/flatListData';
 import SwipeOut from 'react-native-swipeout';
 import AddModalStudy from './addModal';
+import { StudyService } from '../networking/service';
 
 var screen = Dimensions.get('window');
 class FlatListItem extends Component {
@@ -59,18 +60,35 @@ class FlatListItem extends Component {
             <SwipeOut {...swipeOutSetting}>
                 <View style={{
                     flex: 1,
+                    flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'stretch',
                     backgroundColor: '#f9c2ff',
                     padding: 20,
                     marginVertical: 8,
+
                 }}>
-                    <Text>
-                        ${this.props.item.title}
-                    </Text>
-                    <Text>
-                        {this.props.item.description}
-                    </Text>
+                    <View>
+                        <Image style={{ width: 100, height: 100 }}
+                            source={{ url: this.props.item.img }}
+                        />
+                    </View>
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: 'column',
+                            paddingLeft: 10
+                        }}
+                    >
+                        <Text
+                            style={{ fontSize: 17, fontWeight: 'bold', marginBottom: 10 }}
+                        >
+                            {this.props.item.title}
+                        </Text>
+                        <Text>
+                            {this.props.item.description}
+                        </Text>
+                    </View>
                 </View>
             </SwipeOut>
         )
@@ -80,7 +98,9 @@ export default class FlatListStudy extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            deletedRowKey: null
+            deletedRowKey: null,
+            refreshing: false,
+            foodList: []
         }
         // createRef
         this.addModal = React.createRef();
@@ -88,6 +108,24 @@ export default class FlatListStudy extends Component {
         // 'this' in _onPressAdd isn't 'this' in FlatListStudy => can not call 'refs'
         // - This assignment means making them to one.
         this._onPressAdd = this._onPressAdd.bind(this);
+        this.studyService = new StudyService();
+    }
+
+    componentDidMount() {
+        this.loadFoodList();
+    }
+
+    async loadFoodList() {
+        this.setState({
+            refreshing: true
+        })
+        const response = await this.studyService.getFoodList();
+        const foodListResponse = await response.json();
+
+        this.setState({
+            foodList: foodListResponse,
+            refreshing: false
+        })
     }
 
     refreshFlatList = (key) => {
@@ -109,6 +147,10 @@ export default class FlatListStudy extends Component {
         flatListData.push(newFood);
         alert('Add new food successful!')
         this.addModal.current.closeModal();
+    }
+
+    onRefresh = () => {
+        this.loadFoodList();
     }
 
     render() {
@@ -142,9 +184,13 @@ export default class FlatListStudy extends Component {
                 </View>
 
                 <FlatList
-                    data={flatListData}
+                    data={this.state.foodList}
                     renderItem={renderItem}
                     keyExtractor={item => item.id.toString()}
+                    refreshControl={<RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh}
+                    />}
                 >
                 </FlatList>
                 <AddModalStudy

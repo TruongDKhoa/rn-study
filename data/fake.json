@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "Delilah",
+        "from_userId": 5044,
+        "date_sent": "2018-05-23",
+        "priority": 2,
+        "message": "Try to compress the RSS bandwidth, maybe it will calculate the auxiliary hard drive!",
+        "status": 1,
+        "avatar": "https://cdn.fakercloud.com/avatars/franciscoamk_128.jpg"
+    },
+    {
+        "id": 1,
+        "name": "Tyra",
+        "from_userId": 5018,
+        "date_sent": "2018-06-16",
+        "priority": 1,
+        "message": "The PCI hard drive is down, parse the bluetooth bandwidth so we can bypass the SQL panel!",
+        "status": 1,
+        "avatar": "https://cdn.fakercloud.com/avatars/thinkleft_128.jpg"
+    }
+]
