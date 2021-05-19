@@ -6,6 +6,7 @@ import ScrollViewStudy from './components/scrollView';
 import FlatListStudy from './components/flatList';
 import LifeCycleComponent from './components/lifeCycle';
 import CommentList from './components/commentList';
+import LoginComponent from './components/LoginComponent';
 
 export default function App() {
   return (
@@ -20,9 +21,10 @@ export default function App() {
     }}>
       {/* <Basic></Basic> */}
       {/* <ScrollViewStudy></ScrollViewStudy> */}
-      <FlatListStudy></FlatListStudy>
+      {/* <FlatListStudy></FlatListStudy> */}
       {/* <LifeCycleComponent></LifeCycleComponent> */}
       {/* <CommentList></CommentList> */}
+      <LoginComponent></LoginComponent>
     </View>
   );
 }

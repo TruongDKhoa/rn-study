@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "414329782877",
+    "project_id": "rn-study-9eaf8",
+    "storage_bucket": "rn-study-9eaf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414329782877:android:f8a842430ac41a69cc83b4",
+        "android_client_info": {
+          "package_name": "foo.bar.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414329782877-34dsjfn9hvvpdmilvokpd2j5mqq88t6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSx3vSwY5YgwhzR3ZPHHzUBx_Kv2UY328"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414329782877-34dsjfn9hvvpdmilvokpd2j5mqq88t6r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "414329782877-c542170gmu0cavkpd3rs2hr7aq0rilte.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "foo.bar.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
