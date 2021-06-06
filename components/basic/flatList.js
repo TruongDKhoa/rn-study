@@ -3,10 +3,10 @@ import {
     Alert, Image, TextInput, Dimensions, RefreshControl,
     FlatList, StyleSheet, Text, View, TouchableHighlight, Platform, TouchableHighlightBase
 } from 'react-native';
-import flatListData from '../data/flatListData';
+import flatListData from '../../data/flatListData';
 import SwipeOut from 'react-native-swipeout';
 import AddModalStudy from './addModal';
-import { StudyService } from '../networking/service';
+import { StudyService } from '../../networking/service';
 
 var screen = Dimensions.get('window');
 class FlatListItem extends Component {
@@ -179,7 +179,7 @@ export default class FlatListStudy extends Component {
                     >
                         <Image
                             style={{ width: 35, height: 35 }}
-                            source={require('../assets/images/add.png')} />
+                            source={require('../../assets/images/add.png')} />
                     </TouchableHighlight>
                 </View>
 

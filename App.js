@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ViewPagerAndroid } from 'react-native';
-import Basic from './components/basic';
-import ScrollViewStudy from './components/scrollView';
-import FlatListStudy from './components/flatList';
-import LifeCycleComponent from './components/lifeCycle';
-import CommentList from './components/commentList';
+import Basic from './components/basic/basic';
+import ScrollViewStudy from './components/basic/scrollView';
+import FlatListStudy from './components/basic/flatList';
+import LifeCycleComponent from './components/basic/lifeCycle';
+import CommentList from './components/basic/commentList';
 import LoginComponent from './components/LoginComponent';
+import AddComponent from './components/redux/AddComponent';
 
 export default function App() {
   return (
@@ -24,7 +25,8 @@ export default function App() {
       {/* <FlatListStudy></FlatListStudy> */}
       {/* <LifeCycleComponent></LifeCycleComponent> */}
       {/* <CommentList></CommentList> */}
-      <LoginComponent></LoginComponent>
+      {/* <LoginComponent></LoginComponent> */}
+      <AddComponent></AddComponent>
     </View>
   );
 }

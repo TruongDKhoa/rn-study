@@ -19,7 +19,7 @@ class ScrollViewVertical extends Component {
                 maximumZoomScale={3}
             >
                 <Image
-                    source={require('../assets/images/wallpaper.jpg')}
+                    // source={require('../assets/images/wallpaper.jpg')}
                     style={{
                         width: imgWidth,
                         height: imgWidth * (2560 / 1920),

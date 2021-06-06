@@ -4,7 +4,7 @@ import {
     FlatList, StyleSheet, Text, View, TouchableHighlight, Platform, TouchableHighlightBase
 } from 'react-native';
 
-import { StudyService } from '../networking/service';
+import { StudyService } from '../../networking/service';
 
 export default class CommentList extends Component {
     constructor(props) {
